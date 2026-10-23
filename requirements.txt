@@ -1,0 +1,6 @@
+# RiskPulse backend dependencies.
+#
+# Empty for now -- the workshop console (ui/, run.sh) only needs the Python
+# standard library, nothing in this file. Dependencies land here starting
+# Feature 8 (FastAPI + Strawberry GraphQL backend) and grow through the
+# session.
