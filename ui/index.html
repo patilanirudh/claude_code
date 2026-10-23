@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RiskPulse &middot; Workshop Console</title>
+<link rel="icon" href="data:," />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <svg class="brand-mark" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="17" cy="17" r="16" stroke="currentColor" stroke-width="1.5" opacity="0.35"/>
+        <path d="M4 18h5l2.5-7 4 14 3-10 2 3h9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div>
+        <div class="brand-title">RiskPulse</div>
+        <div class="brand-sub">Real-time transaction fraud &amp; risk monitoring</div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <span class="pill pill-muted" id="repo-status">workshop console</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel" id="env-panel">
+      <div class="panel-head">
+        <h2>Environment Readiness</h2>
+        <span class="panel-sub">Checked locally by <code>scripts/env_check.py</code> every time you run <code>./run.sh</code></span>
+      </div>
+      <div class="chip-row" id="env-chips">
+        <span class="chip chip-loading">checking this machine&hellip;</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Feature Roadmap</h2>
+        <span class="panel-sub">Built one feature at a time, live in session. <code>git pull</code> before each block.</span>
+      </div>
+      <div id="roadmap-root" class="roadmap"></div>
+    </section>
+  </main>
+
+  <footer>
+    <span>RiskPulse workshop repo &middot; Claude Code proficiency program</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

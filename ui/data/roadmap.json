@@ -1,0 +1,162 @@
+{
+  "app": "RiskPulse",
+  "tagline": "Real-time transaction fraud & risk monitoring",
+  "categories": [
+    {
+      "id": "foundations",
+      "label": "Foundations",
+      "features": [
+        {
+          "id": 1,
+          "title": "AI-native workflow design",
+          "capability": "Plan Mode / human-in-the-loop",
+          "mode": "live",
+          "prompts": 3,
+          "status": "upcoming"
+        },
+        {
+          "id": 2,
+          "title": "Risk-narrative agent chain",
+          "capability": "Subagents / agent chains",
+          "mode": "live",
+          "prompts": 3,
+          "status": "upcoming"
+        }
+      ]
+    },
+    {
+      "id": "efficiency",
+      "label": "Efficiency & Cost",
+      "features": [
+        {
+          "id": 3,
+          "title": "Token usage logger",
+          "capability": "Token economics + hooks",
+          "mode": "live",
+          "prompts": 3,
+          "status": "upcoming"
+        },
+        {
+          "id": 4,
+          "title": "Multi-model comparison",
+          "capability": "Model/tool selection (OpenRouter)",
+          "mode": "live",
+          "prompts": 3,
+          "status": "upcoming"
+        }
+      ]
+    },
+    {
+      "id": "project-intelligence",
+      "label": "Project Intelligence",
+      "features": [
+        {
+          "id": 5,
+          "title": "Project memory (CLAUDE.md)",
+          "capability": "CLAUDE.md",
+          "mode": "live",
+          "prompts": 3,
+          "status": "upcoming"
+        },
+        {
+          "id": 6,
+          "title": "Guardrail hooks",
+          "capability": "Hooks",
+          "mode": "live",
+          "prompts": 3,
+          "status": "upcoming"
+        },
+        {
+          "id": 7,
+          "title": "Fraud-rule scaffolder",
+          "capability": "Custom skills",
+          "mode": "live",
+          "prompts": 3,
+          "status": "upcoming"
+        },
+        {
+          "id": 10,
+          "title": "Architecture decision memory",
+          "capability": "Typed memory files",
+          "mode": "take-home",
+          "prompts": 3,
+          "status": "upcoming"
+        },
+        {
+          "id": 11,
+          "title": "DB-aware Claude",
+          "capability": "MCP server",
+          "mode": "take-home",
+          "prompts": 3,
+          "status": "upcoming"
+        }
+      ]
+    },
+    {
+      "id": "product-build",
+      "label": "Product Build",
+      "features": [
+        {
+          "id": 8,
+          "title": "Flagged-transaction queue",
+          "capability": "GraphQL + React feature build",
+          "mode": "live",
+          "prompts": 3,
+          "status": "upcoming"
+        },
+        {
+          "id": 9,
+          "title": "Claude usage dashboard",
+          "capability": "Token + model-eval dashboard",
+          "mode": "live",
+          "prompts": 3,
+          "status": "upcoming"
+        }
+      ]
+    },
+    {
+      "id": "quality",
+      "label": "Quality & Architecture",
+      "features": [
+        {
+          "id": 12,
+          "title": "Test suites via prompts",
+          "capability": "Testing",
+          "mode": "take-home",
+          "prompts": 3,
+          "status": "upcoming"
+        },
+        {
+          "id": 13,
+          "title": "Coding standards enforcement",
+          "capability": "Lint/format/type-check",
+          "mode": "take-home",
+          "prompts": 3,
+          "status": "upcoming"
+        },
+        {
+          "id": 14,
+          "title": "Architecture fitness checks",
+          "capability": "ADRs + layering checks",
+          "mode": "take-home",
+          "prompts": 3,
+          "status": "upcoming"
+        }
+      ]
+    },
+    {
+      "id": "hardening",
+      "label": "Enterprise Hardening",
+      "features": [
+        {
+          "id": 15,
+          "title": "Docker, RBAC & threat model",
+          "capability": "Security / scalability / deploy",
+          "mode": "take-home",
+          "prompts": 3,
+          "status": "upcoming"
+        }
+      ]
+    }
+  ]
+}
