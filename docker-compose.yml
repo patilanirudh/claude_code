@@ -6,7 +6,11 @@ services:
       POSTGRES_PASSWORD: riskpulse
       POSTGRES_DB: riskpulse
     ports:
-      - "5432:5432"
+      - "55432:5432"  # non-default host port -- 5432 is often already taken
+                       # by a system postgres on shared/templated VMs. The
+                       # backend talks to this over the Docker network as
+                       # postgres:5432 regardless; this port is only for an
+                       # external client (psql, a GUI tool) on the host.
     volumes:
       - riskpulse_pg:/var/lib/postgresql/data
     healthcheck:
@@ -18,7 +22,7 @@ services:
   redis:
     image: redis:7-alpine
     ports:
-      - "6379:6379"
+      - "56379:6379"  # same reasoning as postgres above
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s
