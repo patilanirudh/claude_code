@@ -27,11 +27,23 @@ capability actually help" is a number, not a feeling.
 
 ## Status
 
-Only the workshop console (`ui/`) exists right now — the dark dashboard you
-get from `./run.sh`, showing environment readiness and the feature roadmap.
-The application architecture below is the **target**: what gets built,
-feature by feature, as the workshop progresses. Check the console's
-Feature Roadmap panel for what's live vs. still upcoming.
+The application is built and runs end to end: React frontend, FastAPI +
+Strawberry GraphQL backend, PostgreSQL, Redis velocity checks and pub/sub,
+and a rule-based risk-narrative generator (see `risk_narrative.py` for why
+it's rule-based rather than an LLM call right now). Verified with
+`docker compose up` — seeded data, live queries, mutations, and the Redis
+pub/sub path all tested working.
+
+What's *not* built yet is everything the workshop roadmap (the console's
+Feature Roadmap panel) actually teaches: CLAUDE.md, memory, hooks, skills,
+MCP, tests, coding-standards enforcement, architecture fitness checks, and
+production hardening. That's deliberate — those lessons land one at a time
+against this now-complete, real codebase instead of a toy scaffold.
+
+Known gap, tracked for Feature 15 (security hardening): `npm audit` shows
+3 moderate/high advisories against Vite's **dev server** (not the production
+build) — fully resolving them means jumping to Vite 8, untested here.
+Current pin (5.4.21) already fixes the worst of them vs. the original 5.4.8.
 
 ## Architecture
 
@@ -112,8 +124,19 @@ a mandatory human-in-the-loop gate before anything gets blocked.
 │   ├── index.html / styles.css / app.js
 │   └── data/roadmap.json     # feature roadmap, flips live -> done as we go
 ├── prompt-library/schema.md  # before/after logging format used in every lab
-├── backend/                  # FastAPI + GraphQL service (built from Feature 8)
-├── frontend/                 # React app (built from Feature 8)
+├── docs/workflow-risk-flagging.md  # the Draft-Review-Approve flow, as implemented
+├── docker-compose.yml        # postgres + redis + backend + frontend, one command
+├── backend/                  # FastAPI + Strawberry GraphQL + SQLAlchemy
+│   └── app/
+│       ├── models.py          # Account, Transaction, RiskFlag, AuditLog
+│       ├── risk_scoring.py    # rule-based velocity + amount scoring
+│       ├── risk_narrative.py  # rule-based explanation (LLM swap is Feature 4)
+│       ├── redis_client.py    # sliding-window velocity checks, pub/sub
+│       ├── graphql_schema.py  # Query / Mutation / Subscription
+│       ├── main.py            # FastAPI app
+│       └── seed.py            # demo accounts + transactions
+├── frontend/                 # React + TypeScript + Apollo Client
+│   └── src/components/{FlaggedQueue,SubmitTransaction}.tsx
 └── README.md
 ```
 
@@ -156,6 +179,24 @@ installs required just to see it:
 Starts a local server and opens the workshop console at
 `http://localhost:8787`. On a remote VM, forward that port or browse to
 `http://<vm-ip>:8787` directly — the script prints both.
+
+## Run the full app
+
+Requires Docker + Docker Compose (the console's Environment Readiness panel
+tells you if they're missing).
+
+```bash
+docker compose up -d
+docker compose exec backend python -m app.seed   # one-time demo data
+```
+
+- Frontend: http://localhost:5173
+- GraphQL API: http://localhost:8000/graphql
+- Health check: http://localhost:8000/health
+
+Backend and frontend source are bind-mounted into their containers, so
+editing code live-reloads (`uvicorn --reload` / Vite HMR) without a rebuild.
+`docker compose down` to stop; add `-v` to also drop the Postgres volume.
 
 ## During the workshop
 

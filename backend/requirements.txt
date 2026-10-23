@@ -1,0 +1,10 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+strawberry-graphql[fastapi]==0.236.0
+# pinned: newer pydantic (2.10+) removed an internal API strawberry's
+# experimental.pydantic module imports unconditionally on `import strawberry`
+pydantic==2.9.2
+sqlalchemy==2.0.35
+psycopg2-binary==2.9.9
+redis==5.0.8
+python-dotenv==1.0.1
