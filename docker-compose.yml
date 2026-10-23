@@ -34,6 +34,11 @@ services:
     environment:
       DATABASE_URL: postgresql+psycopg2://riskpulse:riskpulse@postgres:5432/riskpulse
       REDIS_URL: redis://redis:6379/0
+      # Container runs as root (no USER in the Dockerfile) and backend/app/
+      # is bind-mounted -- without this, Python's __pycache__/*.pyc files
+      # get written to the host owned by root, which a non-root VM user
+      # then can't delete via a normal file manager. Just skip writing them.
+      PYTHONDONTWRITEBYTECODE: "1"
     ports:
       - "8000:8000"
     volumes:
