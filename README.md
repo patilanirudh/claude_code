@@ -262,3 +262,8 @@ Routing helps control cost and pick the right model for the job: each
 task gets a difficulty rating (high/medium/low, tracked in a spreadsheet),
 and a router sends it to the appropriately-sized model/agent instead of
 defaulting every task to the biggest one.
+
+### Artifact links
+
+- https://claude.ai/artifact/4thMKB3831onLz3NynPdrx
+- https://claude.ai/artifact/23G3jgbWJBiKmjmxQ6X3xb
