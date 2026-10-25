@@ -267,3 +267,4 @@ defaulting every task to the biggest one.
 
 - https://claude.ai/artifact/4thMKB3831onLz3NynPdrx
 - https://claude.ai/artifact/23G3jgbWJBiKmjmxQ6X3xb
+- https://docs.google.com/document/d/1WkIqzLp0p1WEfhkjV-BPIamY7mYjsOOhvY0KfkFQA9c/edit?tab=t.0
