@@ -210,3 +210,55 @@ git pull
 Everything we build — the actual RiskPulse app code, the prompts used to
 build it, and the metrics on how well each Claude Code capability performed
 — lands in this same repo as we go.
+
+## Workshop planning notes
+
+Working notes from project planning, kept here for reference.
+
+### Team & roles
+
+- Lead (frontend + backend)
+- BA — client-facing requirements
+- Data team — schema / DB tables
+- Scrum master (task tracking)
+- Project manager
+- Tech / integration specialist
+- AI capabilities: vision OCR (scanning), document AI, rendition (PDF
+  rendering worker), REST API
+- Infra: Azure DevOps (repo), CI/CD pipelines, GCP (Kubernetes, Docker, pods)
+
+### Plan
+
+- Week 1: AI-generated tasks + human approval
+- Microservice architecture (each service independent of the others)
+- Domain-driven architecture, documented in an HLD (high-level design) doc
+- Requirements captured as user stories; BA produces ~13–15 user stories
+  per module
+- Frontend: design layout first, build a POC UI (Figma -> Vercel)
+- Module build inputs: generated user stories, Figma export (zip), data
+  model (Excel/Word), system design principles, coding standards, do's
+  and don'ts
+- Target: ship modules to ~60–70% complete first pass; cross-module
+  interdependencies get a placeholder until a later pass
+
+### Repo & running it
+
+- Repo: https://github.com/patilanirudh/claude_code.git
+- `docker compose up -d`
+- `docker compose exec backend python -m app.seed` (one-time demo data)
+- Docker flow: build -> image -> run
+
+### Prompting do's and don'ts
+
+1. Don't write prompts vaguely (e.g. padding with "thank you", "sorry",
+   "please") — be direct.
+2. Be crisp about exactly what you want done.
+3. Draft a plan for the feature being built, execute it step by step, and
+   put a human review gate (yes/no) before accepting the result.
+
+### Model routing
+
+Routing helps control cost and pick the right model for the job: each
+task gets a difficulty rating (high/medium/low, tracked in a spreadsheet),
+and a router sends it to the appropriately-sized model/agent instead of
+defaulting every task to the biggest one.
